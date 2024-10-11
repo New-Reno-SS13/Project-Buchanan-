@@ -30,7 +30,7 @@
 
 		name = "[name] - [poster_structure.original_name]"
 		//If the poster structure is being deleted something has gone wrong, kill yourself off too
-		RegisterSignal(poster_structure, COMSIG_PARENT_QDELETING, .proc/react_to_deletion)
+		RegisterSignal(poster_structure, COMSIG_PARENT_QDELETING, PROC_REF(react_to_deletion))
 
 
 /obj/item/poster/Destroy()
@@ -505,6 +505,8 @@
 	desc = "A green cross, one of the international symbols of aid and health." // Didn't the American Heart Foundation trademark red crosses? I'm playing it safe with green, not that they'll notice spacegame13 poster.
 	icon_state = "poster42_legit"
 
+/obj/structure/sign/poster/ncr
+	name = ""
 
 /obj/structure/sign/poster/ncr/keep_to_myself
 	name = "Careless Talk Costs Lives"

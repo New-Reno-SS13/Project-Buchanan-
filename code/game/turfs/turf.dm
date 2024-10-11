@@ -118,12 +118,9 @@
 	set_custom_materials(custom_materials)
 
 	ComponentInitialize()
-	if(isopenturf(src))
-		var/turf/open/O = src
-		__auxtools_update_turf_temp_info(isspaceturf(get_z_base_turf()) && !O.planetary_atmos)
-	else
+	if(density)
 		update_air_ref(-1)
-		__auxtools_update_turf_temp_info(isspaceturf(get_z_base_turf()))
+	__auxtools_update_turf_temp_info(FALSE)
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -408,7 +405,7 @@
 
 	var/list/things = src_object.contents()
 	var/datum/progressbar/progress = new(user, things.len, src)
-	while (do_after(user, 10, TRUE, src, FALSE, CALLBACK(src_object, /datum/component/storage.proc/mass_remove_from_storage, src, things, progress)))
+	while (do_after(user, 10, TRUE, src, FALSE, CALLBACK(src_object, TYPE_PROC_REF(/datum/component/storage, mass_remove_from_storage), src, things, progress)))
 		stoplag(1)
 	qdel(progress)
 
