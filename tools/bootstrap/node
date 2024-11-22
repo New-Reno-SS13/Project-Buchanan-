@@ -63,6 +63,7 @@ if [ "$(uname)" = "Linux" ] || [ ! -f "$NodeExe" ]; then
 	fi
 fi
 
+
 # Invoke Node with all command-line arguments
 if [ "$is_vendored" = "1" ]; then
 	PATH="$(readlink -f "$NodeDir"):$PATH"
